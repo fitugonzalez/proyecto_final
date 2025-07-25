@@ -1,0 +1,27 @@
+{%extends "padre.html"%}
+
+{%block title%} Pacientes {%endblock%}
+
+{%block content%}
+
+    <h2>Buscar paciente</h2>
+    <form method="GET" action="{% url 'buscar_pacientes' %}">
+        <input type="text" name="nombre" placeholder="Ingrese el nombre del paciente" value="{{ nombre }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+
+<h2>Pacientes:</h2>
+    {% if pacientes %}
+        <ul>
+            {% for paciente in pacientes %}
+                <li>{{ paciente.nombre }} - {{ paciente.edad }} años</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron pacientes.</p>
+    {% endif %}
+
+<a href="{% url 'crear_paciente' %}">Agregar un nuevo paciente</a>
+
+{%endblock%}

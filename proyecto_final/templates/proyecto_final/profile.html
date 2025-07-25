@@ -1,0 +1,18 @@
+{%extends "padre.html"%}
+
+{% block content %}
+
+<h2>Personal</h2>
+{% if user.avatar %}
+<img style = "width:200 px; height: 200 px" src="{{ user.avatar.imagen.url }}" alt="Imagen de Avatar">
+{% endif %}
+
+<p> Nombre de Usuario: {{ user.username }} </p>
+
+<p> Nombre: {{user.first_name}}</p>
+<p> Apellido: {{user.last_name}}</p>
+
+<p> Avatar: </p>
+
+
+{% endblock %}

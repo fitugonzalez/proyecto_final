@@ -1,0 +1,22 @@
+{%extends "padre.html"%}
+
+{% block content %}
+<h2>Buscar Recetas</h2>
+<form method="GET" action="{% url 'buscar_recetas' %}">
+        <input type="text" name="nombre" placeholder="Ingrese la nombre de la receta" value="{{ nombre }}">
+        <button type="submit">Buscar</button>
+</form>
+<h2>Lista de Recetas</h2>
+<ul>
+    {% for receta in recetas %}
+        <li>{{receta.nombre}}</li>
+        <a href="{% url 'detalle-receta' receta.pk %}">Ver detalles</a>
+        <a href="{% url 'eliminar-receta' receta.pk %}">Eliminar</a>
+        <a href="{% url 'editar-receta' receta.pk %}">Editar</a>
+        <li>
+    {% empty %}
+        <li>No hay recetas disponibles.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'crear-receta' %}">Agregar una nueva receta</a>
+{% endblock %}
