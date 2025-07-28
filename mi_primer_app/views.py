@@ -11,23 +11,12 @@ from django.contrib.auth.decorators import login_required
 def inicio(request):
     return render(request, 'mi_primer_app/inicio.html')
 
-@login_required   
-def crear_paciente(request):
-    if request.method == 'POST':
-        form = PacienteForm(request.POST)
-        if form.is_valid():
-            nuevo_paciente = Paciente(
-                nombre = form.cleaned_data['nombre'],
-                apellido= form.cleaned_data['apellido'],
-                edad= form.cleaned_data['edad'],
-                fecha_nacimiento= form.cleaned_data['fecha_nacimiento'],
-                enfermedad= form.cleaned_data['enfermedad'],
-            )
-            nuevo_paciente.save()
-            return redirect('pacientes')
-    else:
-        form = PacienteForm()
-        return render(request,"mi_primer_app/crear_paciente.html",{"form":form})
+class PacienteCreateView(CreateView):
+    model = Paciente
+    form_class = PacienteForm
+    template_name = 'mi_primer_app/crear_paciente.html'
+    success_url = reverse_lazy('pacientes')
+
 @login_required
 def pacientes(request):
     pacientes = Paciente.objects.all()
@@ -77,3 +66,20 @@ class RecetaDetailView(DetailView):
     model = Receta
     template_name = 'mi_primer_app/detalle_receta.html'
     context_object_name = 'receta'
+
+class PacienteUpdateView(UpdateView):
+    model = Paciente
+    form_class = PacienteForm
+    template_name = 'mi_primer_app/crear_paciente.html'
+    success_url = reverse_lazy('pacientes')
+
+class PacienteDeleteView(DeleteView):
+    model = Paciente
+    template_name = 'mi_primer_app/eliminar_paciente.html'
+    success_url = reverse_lazy('pacientes')
+
+class PacienteDetailView(DetailView):
+    model = Paciente
+    template_name = 'mi_primer_app/detalle_paciente.html'
+    context_object_name = 'paciente'
+

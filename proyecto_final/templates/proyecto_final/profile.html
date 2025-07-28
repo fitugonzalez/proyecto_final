@@ -3,16 +3,16 @@
 {% block content %}
 
 <h2>Personal</h2>
-{% if user.avatar %}
-<img style = "width:200 px; height: 200 px" src="{{ user.avatar.imagen.url }}" alt="Imagen de Avatar">
-{% endif %}
 
 <p> Nombre de Usuario: {{ user.username }} </p>
 
 <p> Nombre: {{user.first_name}}</p>
 <p> Apellido: {{user.last_name}}</p>
-
 <p> Avatar: </p>
+{% if user.avatar %}
+<img style = "width:200 px; height: 200 px" src="{{ user.avatar.imagen.url }}" alt="Imagen de Avatar">
+{% endif %}
 
+<a href="{% url 'edit_profile' %}" style="color:blue;display:block;margin-top:30px">Editar el perfil</a>
 
 {% endblock %}

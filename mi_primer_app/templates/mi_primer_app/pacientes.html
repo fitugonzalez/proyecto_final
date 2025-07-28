@@ -12,16 +12,18 @@
 
 
 <h2>Pacientes:</h2>
-    {% if pacientes %}
-        <ul>
-            {% for paciente in pacientes %}
-                <li>{{ paciente.nombre }} - {{ paciente.edad }} años</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No se encontraron pacientes.</p>
-    {% endif %}
-
+   <ul>
+    {% for paciente in pacientes %}
+        <li>{{paciente.nombre}}
+            {{paciente.apellido}}
+        </li>
+        <a href="{% url 'detalle-paciente' paciente.pk %}">Ver detalles</a>
+        <a href="{% url 'eliminar-paciente' paciente.pk %}">Eliminar</a>
+        <a href="{% url 'editar-paciente' paciente.pk %}">Editar</a>
+        <li>
+    {% empty %}
+        <li>No hay pacientes disponibles.</li>
+    {% endfor %}
+</ul>
 <a href="{% url 'crear_paciente' %}">Agregar un nuevo paciente</a>
-
 {%endblock%}

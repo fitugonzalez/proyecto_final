@@ -15,3 +15,12 @@ Proyecto web desarrollado con Django
 - Django 5.2.4
 - HTML + CSS con soporte para Bootstrap
 - SQLite
+
+
+## Comandos utilizados
+- Crear: python -m venv "venv"
+- Activar: .\venv\Scripts\activate
+- python manage.py runserver
+
+
+Link a mi video:

@@ -1,11 +1,10 @@
 from django.urls import path
-from .views import (inicio,
-                    crear_paciente,buscar_pacientes,pacientes,buscar_recetas,
-                    RecetaListView, RecetaCreateView, RecetaDeleteView, RecetaDetailView, RecetaUpdateView)
+from .views import (inicio, buscar_pacientes,pacientes,buscar_recetas, 
+                    RecetaListView, RecetaCreateView, RecetaDeleteView, RecetaDetailView, RecetaUpdateView,
+                    PacienteUpdateView, PacienteDeleteView, PacienteDetailView, PacienteCreateView)
 
 urlpatterns = [
     path('', inicio, name='inicio'),
-    path('crear-paciente/', crear_paciente, name='crear_paciente'),
     path('pacientes/', pacientes, name='pacientes'),
     path('pacientes/buscar', buscar_pacientes, name='buscar_pacientes'),
     path('recetas/buscar', buscar_recetas, name='buscar_recetas'),
@@ -15,5 +14,9 @@ urlpatterns = [
     path('detalle-receta/<int:pk>', RecetaDetailView.as_view(), name='detalle-receta'),
     path('eliminar-receta/<int:pk>', RecetaDeleteView.as_view(), name='eliminar-receta'),
     path('editar-receta/<int:pk>', RecetaUpdateView.as_view(), name='editar-receta'),
+    path('editar-paciente/<int:pk>', PacienteUpdateView.as_view(), name='editar-paciente'),
+    path('eliminar-paciente/<int:pk>', PacienteDeleteView.as_view(), name='eliminar-paciente'),
+    path('detalle-paciente/<int:pk>', PacienteDetailView.as_view(), name='detalle-paciente'),
+    path('crear-paciente/', PacienteCreateView.as_view(), name='crear_paciente'),
 
 ]
