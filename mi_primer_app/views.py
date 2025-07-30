@@ -22,6 +22,8 @@ def pacientes(request):
     pacientes = Paciente.objects.all()
     return render(request, 'mi_primer_app/pacientes.html', {'pacientes': pacientes})
 
+def about(request):
+    return render(request, 'mi_primer_app/about.html')
 
 def buscar_pacientes(request):
     if request.method == 'GET':

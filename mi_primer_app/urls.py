@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (inicio, buscar_pacientes,pacientes,buscar_recetas, 
+from .views import (inicio, buscar_pacientes,pacientes,buscar_recetas, about,
                     RecetaListView, RecetaCreateView, RecetaDeleteView, RecetaDetailView, RecetaUpdateView,
                     PacienteUpdateView, PacienteDeleteView, PacienteDetailView, PacienteCreateView)
 
@@ -8,6 +8,8 @@ urlpatterns = [
     path('pacientes/', pacientes, name='pacientes'),
     path('pacientes/buscar', buscar_pacientes, name='buscar_pacientes'),
     path('recetas/buscar', buscar_recetas, name='buscar_recetas'),
+    path('about', about, name='about'),
+
     # urls con vistas basadas en clase
     path('crear-receta/', RecetaCreateView.as_view(), name='crear-receta'),
     path('listar-recetas/', RecetaListView.as_view(), name='listar-recetas'),
