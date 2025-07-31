@@ -23,4 +23,4 @@ Proyecto web desarrollado con Django
 - python manage.py runserver
 
 
-Link a mi video: https://youtu.be/0A4huCj8KKA
+Link a mi video: https://youtu.be/3Qk4wklKhYs
